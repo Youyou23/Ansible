@@ -1,0 +1,21 @@
+aws cloudformation create-stack --profile aws-devops-udemy-lab --capabilities CAPABILITY_IAM  --stack-name ansible --template-body file:///test-generating-temp.json --parameters ParameterKey=KeyPair,ParameterValue=codeDploy-lab 
+
+Nathaniel Felsen. Effective DevOps with AWS (Kindle Locations 1395-1397). 
+
+curl -Lo ec2.py http://bit.ly/2v4SwE5 
+
+
+
+
+Nathaniel Felsen. Effective DevOps with AWS (Kindle Location 1416). 
+
+
+---
+plugin: aws_ec2
+aws_access_key: AKIA3DB4HWPY6OGN6DGB
+aws_secret_key: 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
+keyed_groups:
+  - key: tags
+    prefix: tag
+
+    

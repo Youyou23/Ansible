@@ -1,0 +1,10 @@
+aws cloudformation create-stack --profile aws-devops-udemy-lab --capabilities CAPABILITY_IAM  --stack-name ansible --template-body file:///test-generating-temp.json --parameters ParameterKey=KeyPair,ParameterValue=codeDploy-lab 
+
+Nathaniel Felsen. Effective DevOps with AWS (Kindle Locations 1395-1397). 
+
+curl -Lo ec2.py http://bit.ly/2v4SwE5 
+
+
+
+
+Nathaniel Felsen. Effective DevOps with AWS (Kindle Location 1416). 
