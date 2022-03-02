@@ -1,5 +1,10 @@
 ---
 # tasks file for nodejs
+
+- name: Upgrade all packages
+  yum:
+    name: '*'
+    state: latest
 - name: Installing nodejs & npm 
   yum:
     name: "{{item}}"
@@ -7,4 +12,4 @@
     state: installed 
   with_items:
     - nodejs
-    - npm 
+    - npm

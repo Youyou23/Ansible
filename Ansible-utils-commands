@@ -1,0 +1,7 @@
+ansible '54.175.86.38' \ private-key ~/.ssh/EffectiveDevOpsAWS.pem \ 
+m cron a 'name=ansible-pull minute="*/10" job="/usr/local/bin/ansible-pull U https://github.com/<your_username>/ansible helloworld.yml i localhost sleep 60"' 
+
+
+
+
+
