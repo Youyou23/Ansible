@@ -1,5 +1,0 @@
-export PYTHONPATH=/usr/local/lib/python3.9/site-packages
-
-export AWS_ACCESS_KEY_ID=AKIA3DB4HWPY6OGN6DGB
-
-export AWS_SECRET_ACCESS_KEY=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
