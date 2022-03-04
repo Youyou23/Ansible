@@ -1,7 +1,20 @@
 ansible '54.175.86.38' \ private-key ~/.ssh/EffectiveDevOpsAWS.pem \ 
-m cron a 'name=ansible-pull minute="*/10" job="/usr/local/bin/ansible-pull U https://github.com/<your_username>/ansible helloworld.yml i localhost sleep 60"' 
+-m cron -a 'name=ansible-pull minute="*/10" job="/usr/local/bin/ansible-pull -U https://github.com/Youyou23/ansible helloworld.yml -i localhost sleep 60"' 
+
+
+/usr/local/bin/ansible-pull -U https://github.com/Youyou23/Ansible.git helloworld.yml -i localhost
+
+
+
+ansible aws_ec2 --private-key ../aws-ec2-keys/codeDploy-lab.pem \
+-m cron -a 'name=ansible-pull minute="*/10" job="/usr/local/bin/ansible-pull -U https://github.com/Youyou23/ansible helloworld.yml -i localhost sleep 60"' 
 
 
 
 
+ansible aws_ec2 --private-key ../aws-ec2-keys/codeDploy-lab.pem -m cron -a 'name=ansible-pull minute="*/1" job="/usr/local/bin/ansible-pull -U https://github.com/Youyou23/ansible helloworld.yml -i localhost"' 
 
+ansible aws_ec2 --private-key ../aws-ec2-keys/codeDploy-lab.pem --become \-m yum -a 'name=git enablerepo=epel state=installed'
+
+
+*/1 * * * /usr/local/bin/ansible-pull -U https://github.com/Youyou23/Ansible.git helloworld.yml -i localhost
