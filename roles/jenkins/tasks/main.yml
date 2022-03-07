@@ -1,0 +1,21 @@
+---
+# tasks file for jenkins
+- name: Add Jenkins repo
+  yum_repository:
+    name: jenkins 
+    description: jenkins repo
+    baseurl: http://pkg.jenkins.io/redhat
+    enabled: no
+    gpgcheck: yes
+- name: Install jenkins 
+  yum:
+    name: jenkins
+    enablerepo: jenkins 
+    state: present 
+- name: Start Jenkins 
+  service: 
+    name: jenkins-2.45
+    enabled: yes
+    state: started 
+
+
