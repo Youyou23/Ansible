@@ -1,30 +1,48 @@
 ---
-# tasks file for jenkins on RHEL
-- name: add jenkins key
-  rpm_key:
-    state: present
-    key: "{{ jenkins_key_rpm }}"
-- name: Repos
-  debug:
-      msg: "{{ item.value.description }} {{ item.value.name }}, {{ item.value.url }}"
-  loop:
-      "{{ lookup('dict',repos) }}"
-- name: "Set EPEL yum repository"
-  yum_repository:
-      name: "{{ item.value.name }}"
-      baseurl: "{{ item.value.url }}"
-      description: "{{ item.value.description }}"
-  loop:
-      "{{ lookup('dict',repos) }}"
-- name: "Install Java and Jenkins"
+    
+- name: update all packages
   yum:
-      name: "{{ item.value.name }}"
-  loop:
-      "{{ lookup('dict',softwares) }}"
-- name: "Starting jenkins"
-  service:
-      name: "jenkins"
-      state: started
-      enabled: yes
+    name: '*'
+    state: latest
+
+- name: install openjdk
+  yum:
+    name: java-1.8.0-openjdk
+    state: present
+
+- name: Add the Jenkins repo
+  get_url:
+    url: "{{ jenkins_repo_url }}"
+    dest: /etc/yum.repos.d/jenkins.repo
+
+- name: Import a key file from Jenkins-CI
+  rpm_key:
+     state: present
+     key: "{{ gpg_key }}"
+
+- name: Install Jenkins
+  yum: 
+    name: jenkins
+    state: present
+
+- name: Start Jenkins service
+  systemd:
+     name: jenkins
+     state: started
+     enabled: true
+- name: sleep for 30 seconds
+  wait_for:
+     timeout: 30
+
+- name: Init password Jenkins
+  become: yes
+  become_method: sudo
+  command: cat /var/lib/jenkins/secrets/initialAdminPassword
+  changed_when: false
+  register: result
+
+- name: Print init password Jenkins
+  debug:
+    var: result.stdout
 
 
