@@ -1,14 +1,29 @@
 ---
 # tasks file for nodejs
+---
+- name: Install curl and wget
+  gather_facts: 'no'
+  hosts: mock
+  become: yes
+  remote_user: root
 
-- name: Upgrade all packages
-  yum:
-    name: '*'
-    state: latest
-- name: Installing nodejs & npm 
-  yum:
-    name: "{{item}}"
-    state: installed 
-  with_items:
-    - nodejs
-    - npm
+  tasks:
+    - name: Install curl
+      yum:
+        name: curl
+        state: present
+
+    - name: Install wget
+      yum:
+        name: wget
+        state: present
+
+- name: Create nvm
+  gather_facts: 'no'
+  hosts: mock
+  become: yes
+  remote_user: root
+
+  roles:
+    - role: ansible-role-nvm
+      nodejs_version: '10.16.0'
