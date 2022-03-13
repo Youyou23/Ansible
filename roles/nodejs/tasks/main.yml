@@ -1,6 +1,4 @@
 ---
-# tasks file for nodejs
----
 - name: Install curl and wget
   gather_facts: 'no'
   hosts: mock
