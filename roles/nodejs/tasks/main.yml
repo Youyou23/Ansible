@@ -1,4 +1,5 @@
 ---
+
 - name: Install curl and wget
   gather_facts: 'no'
   hosts: mock
