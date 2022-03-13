@@ -8,7 +8,6 @@
 - name: Installing nodejs & npm 
   yum:
     name: "{{item}}"
-    enablerepo: epel
     state: installed 
   with_items:
     - nodejs
