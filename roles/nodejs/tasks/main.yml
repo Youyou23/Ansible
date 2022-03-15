@@ -6,8 +6,10 @@
   shell: . ~/.nvm/nvm.sh
 - name: "Use nvm to install the latest version of Node.js"
   shell: nvm install node
+  become: yes
   args:
     executable: /usr/sbin
+  
 
 
 
