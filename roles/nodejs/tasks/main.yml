@@ -1,12 +1,12 @@
 ---
 # tasks file for nodejs
 - name: "Install node version manager (nvm)"
-  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+  ansible.builtin.command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 - name: "Activate nvm"
-  shell: . ~/.nvm/nvm.sh
+  ansible.builtin.command: . ~/.nvm/nvm.sh
 - name: "Use nvm to install the latest version of Node.js"
-  shell: nvm install node
+  ansible.builtin.command: nvm install node
 - name: "Use nvm to install the latest version of Node.js"
-  shell: nvm install node
+  ansible.builtin.command: nvm install node
 
 
