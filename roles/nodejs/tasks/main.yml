@@ -7,7 +7,7 @@
   shell: 'curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
 - name: Install reqired packages
   apt: 
-    name: {{ item }}
+    name: "{{ item }}"
     state: present
     with_items:
       - curl
