@@ -1,19 +1,30 @@
 ---
-# tasks file for nodejs
-- name: Run the equivalent of "apt-get update" as a separate step
-  apt:
-    update_cache: yes
-- name: Ansible shell module multiple commands
-  shell: 'curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
-- name: Install reqired packages
-  apt: 
-    name: "{{ item }}"
-    state: present
-    with_items:
-      - curl
-      - wget
-      - nginx
-      - nodejs
+- name: Install curl and wget
+  gather_facts: 'no'
+  hosts: mock
+  become: yes
+  remote_user: root
+
+  tasks:
+    - name: Install curl
+      yum:
+        name: curl
+        state: present
+
+    - name: Install wget
+      yum:
+        name: wget
+        state: present
+
+- name: Create nvm
+  gather_facts: 'no'
+  become: yes
+  remote_user: root
+
+  roles:
+    - role: ansible-role-nvm
+      nodejs_version: '10.16.0'
+
   
 
 
