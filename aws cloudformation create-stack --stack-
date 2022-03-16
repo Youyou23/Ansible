@@ -1,0 +1,8 @@
+aws cloudformation create-stack --stack-name jenkins-CI  \
+--template-body file://jenkins-cf-template.json \
+--profile aws-devops-udemy-lab --capabilities CAPABILITY_IAM \ 
+--parameters ParameterKey=KeyPair,ParameterValue=codeDploy-lab \
+
+
+
+ssh -i ../aws-ec2-keys/codeDploy-lab.pem ec2-user@ec2-3-86-76-205.compute-1.amazonaws.com
