@@ -2,7 +2,7 @@
 - hosts: "{{ target | default('localhost')}}"
   become: yes
   roles:
-    - role: ansible-role-nvm
+    - role: ansible-role-nvm-f
       nvm_commands:
        - "nvm exec default npm install"
       become: true            # THIS WILL CHANGE THE LOGIN CONTEXT TO USE THE USER BELOW
